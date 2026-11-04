@@ -18,9 +18,12 @@ artifact built with synthetic data; it is not a production service.
 
 ## Five-minute path
 
-Python 3.12 or newer is required.
+Python 3.12 or newer and Git are required.
 
 ```bash
+git clone https://github.com/darshakm/python-reliability-lab.git
+cd python-reliability-lab
+
 python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install '.[dev]'
@@ -32,8 +35,10 @@ python3 examples/order_model.py
 python3 examples/resilient_read.py
 ```
 
-Expected verification snapshot on the documented local environment: 159 tests,
-Ruff, and strict mypy pass. Exact test count may increase as the project evolves.
+Expected verification snapshot: 159 tests, Ruff, and strict mypy pass. The
+release was verified on Python 3.14.6 and macOS arm64; the package declares
+Python 3.12 or newer, but 3.12 and 3.13 still require independent compatibility
+verification. Exact test counts may increase as the project evolves.
 
 ## Architecture
 
@@ -97,7 +102,7 @@ than placeholder URLs.
 - [Integration, load, and profiling report](docs/unit-5-integration-load-profile-report.md)
 - [Technical article](docs/reliable-python-integrations.md)
 - [Changelog](CHANGELOG.md) and
-  [draft 1.0.0 release notes](docs/release-notes-1.0.0-draft.md)
+  [1.0.0 release notes](docs/release-notes-1.0.0-draft.md)
 
 All performance results are controlled local synthetic measurements. They are not
 production capacity claims; each report records its workload and limitations.
@@ -131,8 +136,9 @@ python3 -m tarfile --list dist/python_reliability_lab-1.0.0.tar.gz
 
 # Independent wheel-consumer environment
 deactivate
-python3 -m venv /tmp/python-reliability-lab-wheel
-source /tmp/python-reliability-lab-wheel/bin/activate
+consumer_dir="$(mktemp -d /tmp/python-reliability-lab-wheel.XXXXXX)"
+python3 -m venv "$consumer_dir/venv"
+source "$consumer_dir/venv/bin/activate"
 python3 -m pip install dist/python_reliability_lab-1.0.0-py3-none-any.whl
 python3 -m pip check
 
@@ -142,9 +148,10 @@ python3 -c 'from importlib.metadata import version; print(version("python-reliab
 python3 -c 'import reliability_lab; print(reliability_lab.__file__)'
 ```
 
-The expected version is `1.0.0`, and the module path should point into
-`/tmp/python-reliability-lab-wheel` rather than this source checkout. The
-verified artifacts are also attached to the public
+The expected version is `1.0.0`, and the module path should point into the
+temporary consumer environment rather than this source checkout. This proves
+the wheel contains the importable package and does not rely on undeclared local
+state. The verified artifacts are also attached to the public
 [v1.0.0 release](https://github.com/darshakm/python-reliability-lab/releases/tag/v1.0.0).
 See the [release verification record](docs/release-verification.md) for the full
 clean-clone and wheel-only evidence.
