@@ -114,14 +114,40 @@ docs/                  decisions, designs, reports, article, and release materia
 
 ## Build and inspect
 
+Build from a development environment, inspect both archives, and then install the
+wheel into a separate consumer environment. Using a second environment prevents
+the source checkout and development dependencies from hiding packaging errors.
+
 ```bash
+# Development/build environment
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install '.[dev]'
+
+rm -rf dist
 python3 -m build
+python3 -m zipfile --list dist/python_reliability_lab-1.0.0-py3-none-any.whl
+python3 -m tarfile --list dist/python_reliability_lab-1.0.0.tar.gz
+
+# Independent wheel-consumer environment
+deactivate
+python3 -m venv /tmp/python-reliability-lab-wheel
+source /tmp/python-reliability-lab-wheel/bin/activate
 python3 -m pip install dist/python_reliability_lab-1.0.0-py3-none-any.whl
+python3 -m pip check
+
+# Run outside the checkout so imports cannot fall back to local source.
+cd /tmp
+python3 -c 'from importlib.metadata import version; print(version("python-reliability-lab"))'
+python3 -c 'import reliability_lab; print(reliability_lab.__file__)'
 ```
 
-Release preparation does not authorize publication. See the
-[release checklist](docs/release-checklist.md). No remote, tag, package upload, or
-public release should be created without explicit approval.
+The expected version is `1.0.0`, and the module path should point into
+`/tmp/python-reliability-lab-wheel` rather than this source checkout. The
+verified artifacts are also attached to the public
+[v1.0.0 release](https://github.com/darshakm/python-reliability-lab/releases/tag/v1.0.0).
+See the [release verification record](docs/release-verification.md) for the full
+clean-clone and wheel-only evidence.
 
 ## License
 
