@@ -22,6 +22,9 @@ classifiers = [
 ]
 dependencies = []
 
+[project.scripts]
+reliability-lab = "reliability_lab.demo:main"
+
 [project.urls]
 Homepage = "https://github.com/darshakm/python-reliability-lab"
 Repository = "https://github.com/darshakm/python-reliability-lab"

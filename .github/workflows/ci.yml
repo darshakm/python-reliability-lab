@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13", "3.14"]
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install project
+        run: python -m pip install '.[dev]'
+      - name: Test
+        run: python -m pytest
+      - name: Lint
+        run: python -m ruff check .
+      - name: Type check
+        run: python -m mypy
+      - name: Run examples and experiments
+        run: |
+          python examples/order_model.py
+          python examples/resilient_read.py
+          reliability-lab concurrency --orders 8 --workers 4 --upstream-capacity 2 --latency 0
+          reliability-lab outage --failures 1 --retries 1
+          reliability-lab cache-stampede --callers 8 --single-flight on --latency 0
+          reliability-lab recovery --threshold 2
+      - name: Build distributions
+        run: python -m build
