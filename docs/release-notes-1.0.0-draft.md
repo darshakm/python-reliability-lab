@@ -1,6 +1,6 @@
 # Python Reliability Lab 1.0.0 — Release Notes
 
-**Status:** Approved for public GitHub release on 2026-11-03.
+**Status:** Published publicly on GitHub on 2026-11-03 as `v1.0.0`.
 
 ## Purpose
 

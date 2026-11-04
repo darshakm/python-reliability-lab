@@ -34,5 +34,5 @@ This checklist prepares a release but does not authorize publication.
 
 - [x] User approves destination, visibility, package name, version, and content
 - [x] Approved public GitHub repository created
-- [ ] Only after approval: tag, push, publish, deploy, upload, or announce
-- [ ] Published URL, version, date, and maintenance owner recorded in progress
+- [x] Approved source, tag, and package artifacts published to GitHub
+- [x] Published URL, version, date, and maintenance owner recorded in release verification
