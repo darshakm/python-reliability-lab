@@ -102,7 +102,9 @@ the limiter counts every physical attempt. See the complete
 Choose a [30-minute, two-hour, or half-day learning path](docs/learning-paths.md).
 Then use the [guided exercises](docs/exercises.md), separate
 [discussion guide](docs/solutions.md), and [interview guide](docs/interview-guide.md)
-to trace, diagnose, change, and defend the design.
+to trace, diagnose, change, and defend the design. The
+[pattern comparisons](docs/pattern-comparisons.md) show how naive approaches fail
+before introducing each bounded mechanism.
 
 ## Reliability contracts
 
