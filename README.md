@@ -129,9 +129,9 @@ python3 examples/resilient_read.py
 ```
 
 The current snapshot has 167 tests plus passing Ruff and strict mypy. The
-`v1.0.0` release was verified on Python 3.14.6 and macOS arm64. The package
-declares Python 3.12 or newer; 3.12 and 3.13 still require independent
-compatibility verification.
+`v1.1.0` candidate was verified locally on Python 3.14.6 and macOS arm64. The
+package declares Python 3.12 or newer; its Python 3.12–3.14 CI matrix is the
+cross-version release gate.
 
 ## Evidence and operations
 
@@ -144,7 +144,8 @@ compatibility verification.
 - [Production evolution](docs/production-evolution.md)
 - [Release verification](docs/release-verification.md)
 - [Continuous verification](https://github.com/darshakm/python-reliability-lab/actions)
-- [Changelog](CHANGELOG.md) and [1.0.0 release notes](docs/release-notes-1.0.0-draft.md)
+- [Changelog](CHANGELOG.md), [1.0.0 release notes](docs/release-notes-1.0.0-draft.md),
+  and [1.1.0 release notes](docs/release-notes-1.1.0-draft.md)
 
 Performance results are controlled local synthetic measurements, not production
 capacity claims. Each report records its workload and limitations.
@@ -181,14 +182,14 @@ dependencies cannot hide packaging errors.
 ```bash
 rm -rf dist
 python3 -m build
-python3 -m zipfile --list dist/python_reliability_lab-1.0.0-py3-none-any.whl
-python3 -m tarfile --list dist/python_reliability_lab-1.0.0.tar.gz
+python3 -m zipfile --list dist/python_reliability_lab-1.1.0-py3-none-any.whl
+python3 -m tarfile --list dist/python_reliability_lab-1.1.0.tar.gz
 
 deactivate
 consumer_dir="$(mktemp -d /tmp/python-reliability-lab-wheel.XXXXXX)"
 python3 -m venv "$consumer_dir/venv"
 source "$consumer_dir/venv/bin/activate"
-python3 -m pip install dist/python_reliability_lab-1.0.0-py3-none-any.whl
+python3 -m pip install dist/python_reliability_lab-1.1.0-py3-none-any.whl
 python3 -m pip check
 
 cd /tmp
@@ -197,9 +198,9 @@ python3 -c 'import reliability_lab; print(reliability_lab.__file__)'
 reliability-lab recovery --threshold 2
 ```
 
-The expected version is `1.0.0`; the module and command should resolve from the
-temporary consumer environment. Verified artifacts are attached to the public
-[v1.0.0 release](https://github.com/darshakm/python-reliability-lab/releases/tag/v1.0.0).
+The expected version is `1.1.0`; the module and command should resolve from the
+temporary consumer environment. Published artifacts are attached to the
+[GitHub releases](https://github.com/darshakm/python-reliability-lab/releases).
 
 ## License
 

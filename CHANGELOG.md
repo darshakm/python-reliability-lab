@@ -5,6 +5,10 @@ Keep a Changelog, and version numbers follow Semantic Versioning.
 
 ## Unreleased
 
+No changes yet.
+
+## 1.1.0 — 2026-11-04
+
 ### Added
 
 - Executable `reliability-lab` experiments for concurrency, transient outage,
@@ -19,7 +23,7 @@ Keep a Changelog, and version numbers follow Semantic Versioning.
 - Reframed the README as an executable system-design study companion and FDE
   showcase.
 
-## 1.0.0 — Unreleased
+## 1.0.0 — 2026-11-03
 
 ### Added
 

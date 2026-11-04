@@ -1,14 +1,14 @@
 # Python Reliability Lab 1.1.0 — Draft Release Notes
 
-**Status:** Unreleased. Version bump, tag, and publication require explicit
-approval after the final compatibility and package checks pass.
+**Status:** Release candidate approved for public GitHub publication on
+2026-11-04. Python 3.12–3.14 CI must pass before the tag is created.
 
 ## Theme
 
 Version 1.1 turns the reliability library into an executable system-design study
 companion and Forward Deployed Engineering showcase.
 
-## Proposed additions
+## Additions
 
 - Four parameterized CLI experiments with JSON output
 - A customer-centered order-integration scenario
@@ -21,7 +21,7 @@ companion and Forward Deployed Engineering showcase.
 
 ## Publication gate
 
-- Confirm CI passes on every declared Python version.
-- Run clean-clone and wheel-only verification.
-- Confirm the final version and release contents.
-- Publish only after explicit approval.
+- [ ] CI passes on every declared Python version.
+- [ ] Clean-clone and wheel-only verification pass.
+- [x] Final version and release contents confirmed.
+- [x] Public GitHub publication explicitly approved.
