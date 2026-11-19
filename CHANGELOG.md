@@ -5,7 +5,10 @@ Keep a Changelog, and version numbers follow Semantic Versioning.
 
 ## Unreleased
 
-No changes yet.
+### Changed
+
+- Positioned the project as a self-paced Python reliability learning repository
+  and replaced role-specific framing with design-review language.
 
 ## 1.1.0 — 2026-11-04
 
@@ -14,14 +17,14 @@ No changes yet.
 - Executable `reliability-lab` experiments for concurrency, transient outage,
   cache stampede, and circuit recovery.
 - Customer scenario, system-design diagrams, ten concept chapters, three guided
-  learning paths, exercises, solutions, interview guide, runbook, and production
-  evolution guide.
+  learning paths, exercises, solutions, design-review guide, runbook, and
+  production evolution guide.
 - Documentation-link verification and a Python 3.12–3.14 CI matrix.
 
 ### Changed
 
-- Reframed the README as an executable system-design study companion and FDE
-  showcase.
+- Reframed the README as an executable, self-paced reliability learning
+  companion.
 
 ## 1.0.0 — 2026-11-03
 

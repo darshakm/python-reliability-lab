@@ -1,4 +1,4 @@
-# System-Design Interview Guide
+# System-Design Review Guide
 
 Use these prompts to defend the design. A strong answer names the invariant,
 failure mode, tradeoff, and production boundary.
@@ -26,5 +26,5 @@ failure mode, tradeoff, and production boundary.
 
 - **Incomplete:** names a pattern without its failure boundary.
 - **Competent:** explains behavior, tradeoff, and evidence in this repository.
-- **Senior/FDE:** connects the choice to customer outcomes, constraints,
+- **Advanced:** connects the choice to customer outcomes, constraints,
   alternatives, operational ownership, and a staged production evolution.

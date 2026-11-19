@@ -23,7 +23,8 @@
 2. Run protected and unprotected stampede experiments.
 3. Trace breaker recovery and inspect the corresponding tests.
 4. Complete all exercises and compare with the solutions.
-5. Use the [interview guide](interview-guide.md) for a design-defense review.
+5. Use the [design-review guide](design-review-guide.md) to explain and challenge
+   the design decisions.
 6. Read the [production evolution](production-evolution.md) document and propose
    a multi-instance architecture.
 

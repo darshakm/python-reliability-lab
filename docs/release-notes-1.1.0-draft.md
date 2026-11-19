@@ -5,8 +5,8 @@
 
 ## Theme
 
-Version 1.1 turns the reliability library into an executable system-design study
-companion and Forward Deployed Engineering showcase.
+Version 1.1 turns the reliability library into an executable, self-paced study
+companion for learning reliability concepts with Python.
 
 ## Additions
 
@@ -15,7 +15,7 @@ companion and Forward Deployed Engineering showcase.
 - Ten concept chapters and multiple learning paths
 - Architecture, state, stampede, and deadline diagrams
 - Trace, diagnosis, and change exercises with separate solutions
-- System-design interview prompts and answer rubric
+- System-design review prompts and answer rubric
 - Production evolution guide and operational runbook
 - Automated local-link checks and Python 3.12–3.14 CI
 

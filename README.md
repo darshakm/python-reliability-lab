@@ -1,12 +1,13 @@
 # Python Reliability Lab
 
-An executable study companion for learning how production integrations behave
-under concurrency, overload, partial failure, and recovery. It combines typed
-Python reference implementations, runnable experiments, guided exercises, and
-the design reasoning expected in Forward Deployed Engineering work.
+Self-paced, hands-on learning for building reliable systems with Python. The
+repository combines small reference implementations, runnable experiments,
+concept guides, and exercises that show how software behaves under concurrency,
+overload, partial failure, and recovery.
 
-The project uses synthetic order data and a simulated dependency. It is a
-learning and portfolio artifact, not a hosted production service.
+The project uses synthetic order data and a simulated dependency, so you can
+change one variable at a time and observe the result locally. It is a learning
+environment, not a hosted production service.
 
 ## The customer problem
 
@@ -19,17 +20,18 @@ traffic storm.
 Read the full [customer scenario](docs/customer-scenario.md), including outcomes,
 constraints, success measures, and discovery questions.
 
-## What this demonstrates
+## What you will learn
 
-| FDE competency | Evidence in this project |
+| Topic | How you will explore it |
 |---|---|
-| Customer problem framing | Scenario, constraints, success measures, and open discovery questions |
-| Integration engineering | Authenticated HTTP, canonical domain validation, and explicit failure types |
-| Reliability judgment | Bounded concurrency, deadlines, retries, limiting, breaker, and stale policy |
-| System design | Composition diagrams, alternatives, invariants, and production evolution |
-| Operational readiness | Correlated events, fault injection, runbook, load tests, and profiling |
-| Technical communication | Ten concept chapters, guided exercises, ADRs, and interview prompts |
-| Delivery discipline | Strict typing, linting, 165 tests, package verification, and releases |
+| Trust boundaries | Validate external data into a typed, immutable domain model |
+| Concurrency and deadlines | Bound active and waiting work, then propagate cancellation |
+| Transient failure | Apply retries only where operations and failures are safe to repeat |
+| Overload protection | Compare rate limiting, backpressure, and circuit breaking |
+| Cache resilience | Prevent stampedes and constrain stale-data fallback |
+| Observability | Correlate logical operations with their physical attempts |
+| Capacity reasoning | Run controlled load tests and interpret bottlenecks carefully |
+| Pattern composition | Decide which layer owns recovery, protection, and fallback |
 
 ## Five-minute experiment
 
@@ -84,7 +86,12 @@ This ordering is deliberate: the breaker counts the final logical outcome, while
 the limiter counts every physical attempt. See the complete
 [architecture and failure diagrams](docs/diagrams.md).
 
-## Study the concepts
+## Learn at your own pace
+
+Start with the five-minute experiment, follow one of the suggested learning
+paths, or jump directly to a concept you want to understand. Each chapter links
+the design idea to executable Python and tests, so you can read, run, modify,
+and verify the behavior yourself.
 
 | Chapter | Central design question |
 |---|---|
@@ -101,8 +108,9 @@ the limiter counts every physical attempt. See the complete
 
 Choose a [30-minute, two-hour, or half-day learning path](docs/learning-paths.md).
 Then use the [guided exercises](docs/exercises.md), separate
-[discussion guide](docs/solutions.md), and [interview guide](docs/interview-guide.md)
-to trace, diagnose, change, and defend the design. The
+[discussion guide](docs/solutions.md), and
+[design-review prompts](docs/design-review-guide.md) to trace, diagnose, change,
+and explain the design. The
 [pattern comparisons](docs/pattern-comparisons.md) show how naive approaches fail
 before introducing each bounded mechanism.
 
@@ -128,10 +136,9 @@ python3 examples/order_model.py
 python3 examples/resilient_read.py
 ```
 
-The current snapshot has 167 tests plus passing Ruff and strict mypy. The
-`v1.1.0` candidate was verified locally on Python 3.14.6 and macOS arm64. The
-package declares Python 3.12 or newer; its Python 3.12–3.14 CI matrix is the
-cross-version release gate.
+The package declares Python 3.12 or newer. CI verifies the supported Python
+versions, while Ruff and strict mypy keep the examples and implementation
+consistent as you experiment.
 
 ## Evidence and operations
 
@@ -169,8 +176,8 @@ src/reliability_lab/   implementation and experiment CLI
 tests/                 unit, integration, fault, and CLI tests
 examples/              small model and resilient-read examples
 benchmarks/            reproducible concurrency and load scripts
-docs/concepts/         system-design study chapters
-docs/                  scenario, exercises, diagrams, evidence, and runbook
+docs/concepts/         reliability concept chapters
+docs/                  learning paths, exercises, diagrams, evidence, and runbook
 ```
 
 ## Build and inspect the package
